@@ -11,7 +11,7 @@ function love.load()
 	rt:setPadding({20,5,10,5})
 	rt:setMargin({4,2,4,2})
 	rt:set(
-		{33,34,32,230},"TEST",{230,240,220}
+		{33/255,34/255,32/255,230/255},"TEST",{230/255,240/255,220/255}
 		)
 end
 
@@ -40,11 +40,11 @@ local cacheSize=0
 local t=0
 local tx=0
 function love.draw( dt )
-	love.graphics.setColor( 255, 255, 255, 150 )
+	love.graphics.setColor( 255/255, 255/255, 255/255, 150/255 )
 	love.graphics.setFont(font26)
 	love.graphics.print("delta t:"..t, 10, 10, 0)
 	love.graphics.print(buffer,10,100,0)
-	love.graphics.setColor( 255, 255, 255, 255 )
+	love.graphics.setColor( 255/255, 255/255, 255/255, 255/255 )
 	rt:drawCanvas(0,50)
 end
 
@@ -53,7 +53,7 @@ function love.update( dt )
 	tx=tx+dt
 	if tx>0.07 then
 		rt:update(function()
-		rt:set({33,34,32,230},round(t,3),{t*255,math.random(255),math.random(255),255})
+		rt:set({33/255,34/255,32/255,230/255},round(t,3),{t,math.random(255)/255,math.random(255)/255,255/255})
 		rt:draw()
 		end)
 		tx=tx-0.07
